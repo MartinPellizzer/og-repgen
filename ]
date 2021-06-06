@@ -1,0 +1,119 @@
+from tkinter import *
+
+bg_color = "#121212"
+fg_color = "#f2f2f2"
+
+count = 0
+def click():
+	global count
+	username = entry.get()
+	entry.delete(0, END)
+	#entry.delete(len(entry.get())-1, END)
+	count += 1
+	print(str(count) + username)
+
+def display():
+	if(x.get()==1):
+		print("on")
+	else:
+		print("off")
+
+window = Tk()
+window.geometry("420x420")
+window.title("Certificato Sanificazione")
+window.iconphoto(True, PhotoImage(file="logo.png"))
+#window.config(bg=bg_color)
+
+#label_image = PhotoImage(file="logo.png")
+nome_fornitore = Label(	window, 
+			text="Nome: ", 
+			#bg=bg_color, 
+			#fg=fg_color, 
+			#font=("Arial",12, "normal"),
+			#image=label_image, 
+			#compound="bottom", 
+)
+nome_fornitore.pack()
+
+
+
+entry = Entry(	window,
+		#font=("Arial", 50),
+		bd=0,
+		#show="*",
+) 
+#entry.config(state=DISABLED)
+entry.pack(anchor=W)
+
+x = IntVar()
+check_button_photo = PhotoImage(file="logo.png")
+check_button = Checkbutton(	window,
+				text="i agree",
+				variable=x,
+				onvalue=1,
+				offvalue=0,
+				command=lambda:display(),
+				padx=50,
+				pady=30,
+				image=check_button_photo,		
+				indicatoron=0,		
+				#width=370,		
+)
+check_button.pack()
+
+
+photo = PhotoImage(file="logo.png")
+submit = Button(window,
+		text="Genera Report",
+		command=lambda:click(),
+		#bg=bg_color, 
+		#fg=fg_color, 
+		#font=("Arial",12, "normal"),
+		#activeforeground=fg_color, 
+		#activebackground=bg_color, 
+		#state=DISABLED, 
+		image=photo, 
+)
+submit.pack()
+
+# radiobutton
+
+# scale
+
+# area select
+
+
+from tkinter import messagebox
+
+def message_box_click():
+	messagebox.showinfo(title="title", message="message")
+	#messagebox.showwarning(title="title", message="message")
+	#messagebox.showerror(title="title", message="message")
+	#if messagebox.askokcancel(title="title", message="message"):
+	#	print("")
+	#if messagebox.askretrycancel(title="title", message="message"):
+	#	print("")
+	#if messagebox.askyesnocancel(title="title", message="message"):
+	#	print("")
+
+message_box_button = Button(window, command=message_box_click, text="message box")
+message_box_button.pack()
+
+
+# color picker
+
+# textarea
+
+
+# ----------------------------------------------------------------
+# filedialog
+# ----------------------------------------------------------------
+from tkinter import filedialog
+
+def openfile():
+	filepath = filedialog.askopenfilename()
+	print(filepath)
+
+fd_button = Button(text="Open", command=openfile)
+
+window.mainloop()
