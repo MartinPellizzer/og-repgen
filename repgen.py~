@@ -1,0 +1,91 @@
+from tkinter import *
+from fpdf import FPDF
+
+def generate_report():
+    pdf = FPDF()
+    pdf.add_page()
+    #pdf.cell(95, 7, "Fornitore Servizio")
+    pdf.output("report.pdf")
+    
+window = Tk()
+window.geometry("1920x1080")
+
+frame1 = Frame(window, bg="#888888", width=300).pack(side=LEFT, fill=BOTH)
+frame2 = Frame(window, bg="#f2f2f2")
+frame2.pack(side=LEFT, fill=BOTH, expand=1)
+
+frame1 = Frame(	window, 
+		#bg="green", 
+		width=300, 
+		relief="raised", 
+		borderwidth=1, 
+		)
+frame1.pack(fill=Y, side=LEFT)
+frame1.pack_propagate(0)
+
+frame2 = Frame(	window, 
+		#bg="red",
+		relief="raised", 
+		borderwidth=1, 
+		)
+frame2.pack(side=LEFT, expand=1, fill=BOTH)
+frame2.pack_propagate(0)
+
+padx = 10
+pady = 2
+
+name_label = Label(frame1, text="Nome: ")
+name_label.pack(anchor=W, padx=padx, pady=pady)
+name_entry = Entry(frame1, width=40)
+name_entry.pack(anchor=W, padx=padx, pady=pady)
+
+address_label = Label(frame1, text="Indirizzo: ")
+address_label.pack(anchor=W, padx=padx, pady=pady)
+address_entry = Entry(frame1, width=40)
+address_entry.pack(anchor=W, padx=padx, pady=pady)
+
+city_label = Label(frame1, text="Città: ")
+city_label.pack(anchor=W, padx=padx, pady=pady)
+city_entry = Entry(frame1, width=40)
+city_entry.pack(anchor=W, padx=padx, pady=pady)
+
+state_label = Label(frame1, text="Provincia: ")
+state_label.pack(anchor=W, padx=padx, pady=pady)
+state_entry = Entry(frame1, width=40)
+state_entry.pack(anchor=W, padx=padx, pady=pady)
+
+zip_label = Label(frame1, text="Cap: ")
+zip_label.pack(anchor=W, padx=padx, pady=pady)
+zip_entry = Entry(frame1, width=40)
+zip_entry.pack(anchor=W, padx=padx, pady=pady)
+
+country_label = Label(frame1, text="Stato: ")
+country_label.pack(anchor=W, padx=padx, pady=pady)
+country_entry = Entry(frame1, width=40)
+country_entry.pack(anchor=W, padx=padx, pady=pady)
+
+email_label = Label(frame1, text="Email: ")
+email_label.pack(anchor=W, padx=padx, pady=pady)
+email_entry = Entry(frame1, width=40)
+email_entry.pack(anchor=W, padx=padx, pady=pady)
+
+phone_label = Label(frame1, text="Tel: ")
+phone_label.pack(anchor=W, padx=padx, pady=pady)
+phone_entry = Entry(frame1, width=40)
+phone_entry.pack(anchor=W, padx=padx, pady=pady)
+
+vat_label = Label(frame1, text="IVA: ")
+vat_label.pack(anchor=W, padx=padx, pady=pady)
+vat_entry = Entry(frame1, width=40)
+vat_entry.pack(anchor=W, padx=padx, pady=pady)
+
+
+submit = Button(frame1,
+		text="Genera Report",
+		command=lambda:generate_report(),
+)
+submit.pack()
+
+Label(frame2, text="label1").pack()
+
+window.mainloop()
